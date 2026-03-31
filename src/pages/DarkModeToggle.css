@@ -3,6 +3,19 @@
   gap: 1.5rem;
 }
 
+.darkmode-heading {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: #222;
+  margin-bottom: 0;
+}
+
+.darkmode-sub {
+  color: #888;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
 /* Flicker effect on toggle */
 .darkmode-flicker {
   animation: darkmodeFlicker 0.2s steps(3, end);
@@ -10,10 +23,25 @@
 
 @keyframes darkmodeFlicker {
   0% { opacity: 1; }
-  25% { opacity: 0.4; }
-  50% { opacity: 0.9; }
-  75% { opacity: 0.5; }
+  25% { opacity: 0.3; }
+  50% { opacity: 0.85; }
+  75% { opacity: 0.4; }
   100% { opacity: 1; }
+}
+
+/* Toggle wrapper */
+.darkmode-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.darkmode-label {
+  font-size: 0.75rem;
+  color: #999;
+  letter-spacing: 0.1em;
+  min-width: 40px;
+  text-align: center;
 }
 
 /* Toggle switch */
@@ -26,89 +54,125 @@
 
 .darkmode-toggle__track {
   display: block;
-  width: 80px;
-  height: 40px;
-  border-radius: 20px;
-  background: #ccc;
+  width: 100px;
+  height: 50px;
+  border-radius: 25px;
+  background: #ddd;
   position: relative;
   transition: background 0.3s ease;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .darkmode-toggle__track--on {
-  background: #bbb;
+  background: #d0d0d0;
 }
 
 .darkmode-toggle__thumb {
   position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 32px;
-  height: 32px;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transform: translateX(0);
 }
 
 .darkmode-toggle__thumb--on {
-  animation: darkmodeSpringBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: darkmodeSpringBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .darkmode-toggle__thumb:not(.darkmode-toggle__thumb--on) {
-  animation: darkmodeSpringBack 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: darkmodeSpringBack 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes darkmodeSpringBounce {
-  0% {
-    transform: translateX(0);
-  }
-  30% {
-    transform: translateX(52px);
-  }
-  50% {
-    transform: translateX(36px);
-  }
-  70% {
-    transform: translateX(46px);
-  }
-  85% {
-    transform: translateX(40px);
-  }
-  100% {
-    transform: translateX(40px);
-  }
+  0%   { transform: translateX(0); }
+  30%  { transform: translateX(60px); }
+  50%  { transform: translateX(44px); }
+  70%  { transform: translateX(54px); }
+  85%  { transform: translateX(49px); }
+  100% { transform: translateX(50px); }
 }
 
 @keyframes darkmodeSpringBack {
-  0% {
-    transform: translateX(40px);
-  }
-  30% {
-    transform: translateX(-12px);
-  }
-  50% {
-    transform: translateX(6px);
-  }
-  70% {
-    transform: translateX(-3px);
-  }
-  85% {
-    transform: translateX(1px);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0%   { transform: translateX(50px); }
+  30%  { transform: translateX(-10px); }
+  50%  { transform: translateX(6px); }
+  70%  { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
 }
 
-/* Status text */
-.darkmode-status {
-  font-size: 1.1rem;
+/* Status box */
+.darkmode-status-box {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #eee;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius-sm);
   color: #333;
+  font-size: 0.95rem;
+}
+
+.darkmode-check {
+  color: #4a4;
+  font-size: 1.2rem;
+}
+
+/* Colour comparison swatches */
+.darkmode-comparison {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.darkmode-swatch {
+  width: 100px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.darkmode-swatch span {
+  font-size: 0.7rem;
+  color: #aaa;
+}
+
+.darkmode-swatch-label {
+  font-size: 0.65rem !important;
+  color: #bbb !important;
+}
+
+.darkmode-vs {
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+/* Toggle counter */
+.darkmode-counter {
+  color: #999;
+  font-size: 0.85rem;
+  text-align: center;
+  max-width: 360px;
+  line-height: 1.5;
 }
 
 /* Preferences card */
 .darkmode-prefs {
   max-width: 360px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  width: 100%;
 }
 
 .darkmode-prefs__title {
@@ -116,19 +180,20 @@
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid #ddd;
+  color: #333;
 }
 
 .darkmode-prefs__list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  color: #555;
-  font-size: 0.9rem;
+  gap: 0.5rem;
+  color: #666;
+  font-size: 0.85rem;
 }
 
 .darkmode-prefs__key {
-  color: #333;
+  color: #444;
 }
 
 /* Toast notification */
@@ -142,8 +207,9 @@
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  animation: darkmodeToastIn 0.3s ease-out, darkmodeToastOut 0.4s ease-in 1.6s forwards;
+  animation: darkmodeToastIn 0.3s ease-out, darkmodeToastOut 0.4s ease-in 1.8s forwards;
   z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 @keyframes darkmodeToastIn {
@@ -165,5 +231,15 @@
   to {
     transform: translateY(20px);
     opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .darkmode-comparison {
+    gap: 0.5rem;
+  }
+  .darkmode-swatch {
+    width: 80px;
+    height: 65px;
   }
 }

@@ -1,4 +1,5 @@
 import { HashRouter, Routes, Route } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import FridayCheck from './pages/FridayCheck'
@@ -15,6 +16,7 @@ import BuzzwordBingo from './pages/BuzzwordBingo'
 export default function App() {
   return (
     <HashRouter>
+      <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
