@@ -37,17 +37,20 @@ export default function Layout() {
             <span /><span /><span />
           </button>
 
-          <div className={`nav-links ${menuOpen ? 'show' : ''}`}>
+          <div className="nav-links-desktop">
             {navItems.map(({ path, label }) => (
               <Link
                 key={path}
                 to={path}
                 className={`nav-link ${location.pathname === path ? 'active' : ''}`}
-                onClick={() => setMenuOpen(false)}
               >
                 {label}
               </Link>
             ))}
+          </div>
+
+          <div className={`nav-mobile-panel ${menuOpen ? 'show' : ''}`}>
+            <p className="nav-mobile-joke">Ah shame, Claude couldn't scroll for you...</p>
           </div>
         </div>
       </nav>
