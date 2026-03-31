@@ -1,0 +1,137 @@
+/* ===== NAV BAR ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-dark);
+  border-bottom: 1px solid var(--green-border);
+  backdrop-filter: blur(8px);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  height: 60px;
+  gap: 1rem;
+}
+
+.nav-logo {
+  color: var(--green);
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+  white-space: nowrap;
+  text-shadow: 0 0 8px var(--green-glow);
+  flex-shrink: 0;
+}
+
+.nav-logo-bracket {
+  color: var(--green-dim);
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  flex: 1;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--green);
+  background: var(--green-border);
+}
+
+.nav-link.active {
+  color: var(--green);
+  background: rgba(0, 255, 65, 0.1);
+  text-shadow: 0 0 6px var(--green-glow);
+}
+
+/* ===== HAMBURGER ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: auto;
+  z-index: 101;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--green);
+  transition: all 0.3s;
+  transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===== MOBILE NAV ===== */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    width: 260px;
+    background: var(--bg-dark);
+    border-left: 1px solid var(--green-border);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.25rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+
+  .nav-links.show {
+    transform: translateX(0);
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* ===== MAIN ===== */
+.main-content {
+  min-height: calc(100vh - 60px);
+}

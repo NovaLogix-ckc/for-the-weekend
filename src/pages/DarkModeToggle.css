@@ -1,0 +1,169 @@
+.darkmode-page {
+  transition: background 0.3s ease;
+  gap: 1.5rem;
+}
+
+/* Flicker effect on toggle */
+.darkmode-flicker {
+  animation: darkmodeFlicker 0.2s steps(3, end);
+}
+
+@keyframes darkmodeFlicker {
+  0% { opacity: 1; }
+  25% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+  75% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Toggle switch */
+.darkmode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.darkmode-toggle__track {
+  display: block;
+  width: 80px;
+  height: 40px;
+  border-radius: 20px;
+  background: #ccc;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.darkmode-toggle__track--on {
+  background: #bbb;
+}
+
+.darkmode-toggle__thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: none;
+}
+
+.darkmode-toggle__thumb--on {
+  animation: darkmodeSpringBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.darkmode-toggle__thumb:not(.darkmode-toggle__thumb--on) {
+  animation: darkmodeSpringBack 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes darkmodeSpringBounce {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(52px);
+  }
+  50% {
+    transform: translateX(36px);
+  }
+  70% {
+    transform: translateX(46px);
+  }
+  85% {
+    transform: translateX(40px);
+  }
+  100% {
+    transform: translateX(40px);
+  }
+}
+
+@keyframes darkmodeSpringBack {
+  0% {
+    transform: translateX(40px);
+  }
+  30% {
+    transform: translateX(-12px);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+  70% {
+    transform: translateX(-3px);
+  }
+  85% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Status text */
+.darkmode-status {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Preferences card */
+.darkmode-prefs {
+  max-width: 360px;
+}
+
+.darkmode-prefs__title {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.darkmode-prefs__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.darkmode-prefs__key {
+  color: #333;
+}
+
+/* Toast notification */
+.darkmode-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: #333;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  animation: darkmodeToastIn 0.3s ease-out, darkmodeToastOut 0.4s ease-in 1.6s forwards;
+  z-index: 100;
+}
+
+@keyframes darkmodeToastIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes darkmodeToastOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}

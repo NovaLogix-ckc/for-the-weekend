@@ -1,0 +1,208 @@
+/* ===== IS MY CODE GOOD? ===== */
+
+.code-judge-page {
+  transition: background 0.3s ease;
+}
+
+/* ===== BACKGROUND FLASH ON VERDICT ===== */
+
+.flash-green {
+  animation: bg-flash-green 0.6s ease-out;
+}
+
+.flash-red {
+  animation: bg-flash-red 0.6s ease-out;
+}
+
+@keyframes bg-flash-green {
+  0% { background: rgba(0, 255, 65, 0.15); }
+  100% { background: transparent; }
+}
+
+@keyframes bg-flash-red {
+  0% { background: rgba(255, 65, 65, 0.15); }
+  100% { background: transparent; }
+}
+
+/* ===== JUDGE ARENA ===== */
+
+.code-judge-arena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* ===== MAIN JUDGE BUTTON ===== */
+
+.code-judge-btn {
+  font-size: 1.6rem;
+  padding: 1.5rem 3rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: judge-pulse 2s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes judge-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 10px var(--green-glow),
+      0 0 30px var(--green-glow);
+  }
+  50% {
+    box-shadow:
+      0 0 20px var(--green-glow),
+      0 0 50px var(--green-glow),
+      0 0 80px var(--green-glow);
+  }
+}
+
+.code-judge-btn:hover {
+  animation: judge-pulse-fast 0.6s ease-in-out infinite;
+}
+
+@keyframes judge-pulse-fast {
+  0%, 100% {
+    box-shadow:
+      0 0 15px var(--green-glow),
+      0 0 40px var(--green-glow);
+  }
+  50% {
+    box-shadow:
+      0 0 25px var(--green-glow),
+      0 0 60px var(--green-glow),
+      0 0 100px var(--green-glow);
+  }
+}
+
+/* ===== PROCESSING STATE ===== */
+
+.code-judge-processing {
+  animation: judge-shake 0.15s ease-in-out infinite !important;
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+@keyframes judge-shake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-3px, 2px) rotate(-1deg); }
+  50% { transform: translate(2px, -3px) rotate(1deg); }
+  75% { transform: translate(-2px, -1px) rotate(-0.5deg); }
+  100% { transform: translate(3px, 1px) rotate(0.5deg); }
+}
+
+.analyzing-text {
+  display: inline;
+}
+
+.analyzing-dots span {
+  animation: dot-bounce 1.4s ease-in-out infinite;
+  display: inline-block;
+}
+
+.analyzing-dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.analyzing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.analyzing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dot-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  30% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+/* ===== VERDICT CARD ===== */
+
+.code-verdict-card {
+  max-width: 550px;
+  text-align: center;
+  animation: verdict-slam 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-width: 2px;
+  border-style: solid;
+}
+
+@keyframes verdict-slam {
+  0% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.95);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.verdict-positive {
+  border-color: var(--green);
+  box-shadow: 0 0 15px var(--green-glow), 0 0 30px var(--green-glow);
+}
+
+.verdict-negative {
+  border-color: var(--red);
+  box-shadow: 0 0 15px rgba(255, 65, 65, 0.3), 0 0 30px rgba(255, 65, 65, 0.2);
+}
+
+.code-verdict-text {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: var(--green);
+  padding: 0.5rem 0;
+}
+
+.verdict-negative .code-verdict-text {
+  color: var(--red);
+}
+
+/* ===== JUDGE AGAIN BUTTON ===== */
+
+.code-judge-again {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  animation: fade-in-up 0.4s ease-out 0.3s both;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+  .code-judge-btn {
+    font-size: 1.2rem;
+    padding: 1.2rem 2rem;
+    letter-spacing: 2px;
+  }
+
+  .code-verdict-text {
+    font-size: 1.1rem;
+  }
+}

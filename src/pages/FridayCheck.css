@@ -1,0 +1,176 @@
+.friday-page {
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.friday-answer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 12rem;
+}
+
+.friday-answer {
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: bold;
+  line-height: 1;
+  text-shadow: 0 0 20px currentColor;
+}
+
+.friday-message {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: var(--text-secondary);
+  max-width: 500px;
+}
+
+/* --- Monday: shaking NO + sad notes --- */
+.friday-monday .friday-answer {
+  animation: fridayShake 0.4s ease-in-out infinite;
+}
+
+.friday-monday {
+  animation: fridayMondayDoom 4s ease-out forwards;
+}
+
+@keyframes fridayShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+@keyframes fridayMondayDoom {
+  from {
+    transform: scale(0.95);
+    filter: saturate(1);
+  }
+  to {
+    transform: scale(1);
+    filter: saturate(0.3);
+  }
+}
+
+.friday-notes {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.friday-note {
+  position: absolute;
+  bottom: -2rem;
+  font-size: 2rem;
+  color: var(--red);
+  opacity: 0.6;
+  animation: fridayNoteFloat 6s ease-in-out infinite;
+}
+
+.friday-note:nth-child(1) { left: 15%; animation-delay: 0s; }
+.friday-note:nth-child(2) { left: 35%; animation-delay: 1.2s; font-size: 1.5rem; }
+.friday-note:nth-child(3) { left: 55%; animation-delay: 2.4s; }
+.friday-note:nth-child(4) { left: 72%; animation-delay: 0.8s; font-size: 1.8rem; }
+.friday-note:nth-child(5) { left: 88%; animation-delay: 3.2s; }
+
+@keyframes fridayNoteFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(40deg);
+    opacity: 0;
+  }
+}
+
+/* --- Tuesday --- */
+.friday-tuesday .friday-answer {
+  animation: fridayPulseRed 2s ease-in-out infinite;
+}
+
+@keyframes fridayPulseRed {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* --- Wednesday --- */
+.friday-wednesday .friday-answer {
+  animation: fridayFlicker 3s steps(2, end) infinite;
+}
+
+@keyframes fridayFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+  51% { opacity: 1; }
+}
+
+/* --- Thursday: pulsing ALMOST --- */
+.friday-thursday .friday-answer {
+  animation: fridayThursPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes fridayThursPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px var(--amber);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 30px var(--amber), 0 0 50px var(--amber);
+    transform: scale(1.03);
+  }
+}
+
+/* --- Friday: celebration --- */
+.friday-friday .friday-answer {
+  animation: fridayCelebrate 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes fridayCelebrate {
+  from {
+    text-shadow: 0 0 20px var(--green), 0 0 40px var(--green);
+    transform: scale(1);
+  }
+  to {
+    text-shadow: 0 0 40px var(--green), 0 0 80px var(--green), 0 0 120px var(--green-glow);
+    transform: scale(1.06);
+  }
+}
+
+.friday-arrow-container {
+  margin-top: 1rem;
+}
+
+.friday-arrow {
+  font-size: 3rem;
+  color: var(--green);
+  display: inline-block;
+  animation: fridayBounceRight 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes fridayBounceRight {
+  from { transform: translateX(0); }
+  to { transform: translateX(20px); }
+}
+
+/* --- Weekend --- */
+.friday-weekend .friday-answer {
+  animation: fridayWeekendGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes fridayWeekendGlow {
+  from {
+    text-shadow: 0 0 10px var(--green);
+  }
+  to {
+    text-shadow: 0 0 25px var(--green), 0 0 50px var(--green-glow);
+  }
+}
